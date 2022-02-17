@@ -30,18 +30,22 @@ const program = new commander.Command();
 
 program.version(package.version, '-v, --version');
 
-program
-    .option('-s, --source [file]', 'path to source model file(s)')
-    .option('-p, --projectid [string]', 'ID for new project')
-    .option('-d, --datadir [file]', 'optional path to target data directory - default is "./data"');
+// program
+//     .option('-s, --source [file]', 'path to source model file(s)')
+//     .option('-p, --projectid [string]', 'ID for new project')
+//     .option('-d, --datadir [file]', 'optional path to target data directory - default is "./data"');
 
-program.on('--help', () => {
+// program.on('--help', () => {
 
-});
+// });
 
-program.parse(process.argv);
+// program.parse(process.argv);
 
-const options = program.opts();
+// const options = program.opts();
+let options ={}
+
+options["source"]="./demoModels/Duplex.ifc"
+options["projectid"]="menbeocccc"
 
 if (options.source === undefined) {
     console.error('\n\nError: please specify path to source model file(s).');
@@ -65,7 +69,7 @@ const projectIndexPath = `${projectDir}/index.json`;
 const projectModelsDir = `${projectDir}/models`;
 
 function log(msg) {
-    console.log("[createProject] " + msg);
+    console.log("[createProject] 0000000" + msg);
 }
 
 createProject().catch(err => {
@@ -126,8 +130,10 @@ async function createProject() {
         });
 
         log(`Creating new project "${projectId}" ...`);
+        console.log("---idex path--",projectsIndexPath);
 
         fs.writeFileSync(projectsIndexPath, JSON.stringify(projectsIndex, null, "\t"));
+       
     }
 
     fs.mkdirSync(projectModelsDir);
@@ -208,7 +214,9 @@ async function createProject() {
     Promise.all(promises).then(() => {
         fs.writeFileSync(projectIndexPath, JSON.stringify(projectIndex, null, "\t"));
         log(`Project "${projectId}" created.`);
-        process.exit(0);
+        console.log("dhahdhgadahdahdahdadhgadha");
+        return 
+        // process.exit(0);
     });
 
 

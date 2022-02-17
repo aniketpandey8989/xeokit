@@ -1,8 +1,12 @@
 {
 	"projects": [
 		{
-			"id": "demoProject",
-			"name": "demoProject"
+			"id": "1645102811070-IfcOpenHouse4.ifc",
+			"name": "1645102811070-IfcOpenHouse4.ifc"
+		},
+		{
+			"id": "1645103016316-Duplex.ifc",
+			"name": "1645103016316-Duplex.ifc"
 		}
 	]
 }

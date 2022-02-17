@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "mkdir -p ./lib/xeokit-bim-viewer; cp ./node_modules/@xeokit/xeokit-bim-viewer/dist/* ./lib/xeokit-bim-viewer/.",
     "create-demo-project": "node ./createProject.js -p demoProject -s ./demoModels/**/*",
-    "delete-demo-project": "node deleteProject.js -p demoProject"
+    "delete-demo-project": "node deleteProject.js -p demoProject",
+    "start": " http-server -p 3002 &  node index.js &  " 
   },
   "repository": {
     "type": "git",
@@ -35,9 +36,14 @@
   "dependencies": {
     "@xeokit/xeokit-bim-viewer": "^2.4.5",
     "@xeokit/xeokit-convert": "^1.0.0",
+    "body-parser": "^1.19.1",
+    "child_process": "^1.0.2",
     "commander": "^8.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
     "glob": "^7.1.7",
     "http-server": "^0.12.3",
+    "multer": "^1.4.4",
     "puppeteer": "^10.1.0",
     "rimraf": "^3.0.2"
   }
