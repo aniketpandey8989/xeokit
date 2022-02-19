@@ -16,6 +16,7 @@ const convert2xkt = require("@xeokit/xeokit-convert/dist/convert2xkt.cjs.js");
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var multer = require('multer')
+// let projectIds = require("./data/projects/index.json")
 
 
 
@@ -31,7 +32,7 @@ var storage = multer.diskStorage({
         cb(null, 'myifcdir')
     },
     filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + file.originalname)
+        cb(null, file.originalname)
     }
 })
 
@@ -65,18 +66,12 @@ app.post('/upload', function (req, res) {
 
 
 app.post("/convertIfcToXkt", (req, res) => {
+    console.log("--file name ---",req.body);
 
+   try {
 
+     
     let filename = req.body.filename
-
-
-
-
-
-
-
-
-
     const SERVER_PORT = 3000;
     const SCREENSHOT_SIZE = [200, 200];
     const HEADLESS = false;
@@ -195,7 +190,8 @@ app.post("/convertIfcToXkt", (req, res) => {
                     log(`Project already exists: "${projectId}"`);
                     // res.send(`Project already exists: "${projectId}"`)
                     // process.exit(1);
-                    return res.send("hhgsdhdhad")
+                    // res.setHeader('content-type', 'text/plain');
+                    return res.send(JSON.stringify({data:"data"}))
                 }
             }
 
@@ -289,7 +285,7 @@ app.post("/convertIfcToXkt", (req, res) => {
             fs.writeFileSync(projectIndexPath, JSON.stringify(projectIndex, null, "\t"));
             log(`Project "${projectId}" created.`);
 
-            return res.send("hhgsdhdhad")
+            return res.send(`Project ${projectId}created`)
             // process.exit(0);
         });
 
@@ -342,5 +338,20 @@ app.post("/convertIfcToXkt", (req, res) => {
 
 
 
+       
+   } catch (error) {
+       console.log("error",error)
+       res.status(400).send("400 Bad Request")
+   }
+
+
+
+
+})
+
+app.get("/getProjectIds",async (req,res)=>{
+    let data =  await JSON.parse(fs.readFileSync('./data/projects/index.json', 'utf-8'))
+    let allprojectId = data.projects.map(d=>d.id)
+    res.send(allprojectId)
 
 })

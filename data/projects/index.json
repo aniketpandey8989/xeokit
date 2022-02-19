@@ -1,5 +1,24 @@
 {
 	"projects": [
-		
+		{
+			"id": "Duplex.ifc",
+			"name": "Duplex.ifc"
+		},
+		{
+			"id": "IfcOpenHouse2x3.ifc",
+			"name": "IfcOpenHouse2x3.ifc"
+		},
+		{
+			"id": "Dormitory-SECU.v9.ifc",
+			"name": "Dormitory-SECU.v9.ifc"
+		},
+		{
+			"id": "IfcOpenHouse4.ifc",
+			"name": "IfcOpenHouse4.ifc"
+		},
+		{
+			"id": "MAP.ifc",
+			"name": "MAP.ifc"
+		}
 	]
 }
