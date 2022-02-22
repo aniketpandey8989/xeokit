@@ -48,6 +48,11 @@ app.listen(port, function (err) {
         console.log("Server has been started at " + port);
     }
 })
+app.get("/test",(req,res)=>{
+    res.send("server is running on port 3000")
+})
+
+
 
 app.post('/upload', function (req, res) {
 
