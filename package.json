@@ -8,7 +8,7 @@
     "build": "mkdir -p ./lib/xeokit-bim-viewer; cp ./node_modules/@xeokit/xeokit-bim-viewer/dist/* ./lib/xeokit-bim-viewer/.",
     "create-demo-project": "node ./createProject.js -p demoProject -s ./demoModels/**/*",
     "delete-demo-project": "node deleteProject.js -p demoProject",
-    "start":"http-server -p 3002 && node index.js"
+    "start": " node index.js  & http-server -p 3002 "
   },
   "repository": {
     "type": "git",
